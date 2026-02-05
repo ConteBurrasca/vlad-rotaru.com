@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - Vlad Rotaru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(232, 235, 233, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .page-header {
+            padding: 12rem 4rem 6rem;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 4rem 8rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 6rem;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item:nth-child(odd) .content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) .content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 8px rgba(44, 95, 122, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--accent-light);
+            box-shadow: 0 0 0 12px rgba(44, 95, 122, 0.15);
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        .content {
+            width: calc(50% - 4rem);
+            background: #f5f7f6;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .date-location {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .date, .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .role {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .role:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .role h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .role ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .role li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .role li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 968px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .content,
+            .timeline-item:nth-child(even) .content {
+                width: calc(100% - 6rem);
+                margin-left: 6rem;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .page-header {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline {
+                padding: 2rem 2rem 4rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .content,
+            .timeline-item:nth-child(even) .content {
+                width: calc(100% - 4rem);
+                margin-left: 4rem;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <nav>
+        <div class="logo">VLAD ROTARU</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="projects.html">Projects</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Work Experience</h1>
+        <p>My professional journey in finance, data analytics, and operations</p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="company-logo">🚚</div>
+                <h2>Evri</h2>
+                <div class="date-location">
+                    <span class="date">📅 September 2021 - Present</span>
+                    <span class="location">📍 Rugby, UK</span>
+                </div>
+                <p>Evri (formerly Hermes Europe) is the UK's biggest dedicated parcel delivery company, reaching a record performance of more than 150 million parcels delivered in January 2024.</p>
+                
+                <div class="role">
+                    <h3>Hub System and Yard Controller Assistant</h3>
+                    <span class="date">November 2022 - Present</span>
+                    <ul>
+                        <li>Bridging planning, transport and operations departments, ensuring seamless coordination</li>
+                        <li>Managing SQL server's data and utilizing Excel, VBA, SQL and Power BI for report generation</li>
+                        <li>Proactively identifying and addressing data discrepancies for optimized operations</li>
+                    </ul>
+                </div>
+
+                <div class="role">
+                    <h3>Finance Administrator</h3>
+                    <span class="date">March 2021 - November 2022</span>
+                    <ul>
+                        <li>Conducted data entry for drivers' routes and maintained communication with recruiting agencies</li>
+                        <li>Managed subcontractors' expenses and coordinated resource utilization</li>
+                        <li>Prepared materials for internal events and supported efficient financial operations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="company-logo">📦</div>
+                <h2>Hermes Europe + Staffline</h2>
+                <div class="date-location">
+                    <span class="date">📅 July 2020 - September 2021</span>
+                    <span class="location">📍 Rugby, UK</span>
+                </div>
+                <p>International trade and logistics service provider offering transport, order fulfilment, and parcel services worldwide.</p>
+                
+                <div class="role">
+                    <h3>Yard Marshal</h3>
+                    <span class="date">October 2020 - March 2021</span>
+                    <ul>
+                        <li>Oversaw efficient organization of goods within the yard</li>
+                        <li>Ensured accurate placement of goods and prioritized shipments</li>
+                        <li>Minimized delays and optimized workflow throughout operations</li>
+                    </ul>
+                </div>
+
+                <div class="role">
+                    <h3>Gatehouse Operator</h3>
+                    <span class="date">July 2020 - October 2020</span>
+                    <ul>
+                        <li>Managed reception of incoming goods</li>
+                        <li>Directed shipments to appropriate sorting points</li>
+                        <li>Maintained accurate tracking and documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="company-logo">💻</div>
+                <h2>Lynx SPA</h2>
+                <div class="date-location">
+                    <span class="date">📅 July 2019</span>
+                    <span class="location">📍 Milan, Italy</span>
+                </div>
+                <p>Specialized in design and implementation of digital solutions for large organizations in Utilities, Finance, Insurance, and Public Administration sectors.</p>
+                
+                <div class="role">
+                    <h3>Software Development Apprentice</h3>
+                    <ul>
+                        <li>Learned fundamentals of object-oriented programming with Java</li>
+                        <li>Studied client-server architecture concepts</li>
+                        <li>Developed custom functions based on company requirements</li>
+                        <li>Worked with tutor on technical implementation projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="company-logo">⚙️</div>
+                <h2>RC-Solution</h2>
+                <div class="date-location">
+                    <span class="date">📅 June 2018 - July 2018</span>
+                    <span class="location">📍 Milan, Italy</span>
+                </div>
+                <p>Manufacturer and assembler of products using technologically advanced production lines and automated testing systems.</p>
+                
+                <div class="role">
+                    <h3>Office Assistant & Lab Technician</h3>
+                    <ul>
+                        <li>Filed orders and invoices, maintained organized documentation</li>
+                        <li>Conducted market research and provided general office assistance</li>
+                        <li>Learned to assemble various electronic components</li>
+                        <li>Gained experience in warehouse operations and product labeling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vlad Rotaru. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">Sito gestito da studiovacchini@gmail.com</p>
+    </footer>
+</body>
+</html>
