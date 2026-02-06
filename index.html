@@ -50,7 +50,8 @@
             right: 0;
             padding: 2rem 4rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+
             align-items: center;
             z-index: 100;
             background: rgba(232, 235, 233, 0.95);
@@ -304,7 +305,8 @@
             padding: 6rem 4rem;
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
+            align-items: center;
+            text-align: center;            
         }
 
         .resume-section h2 {
@@ -319,13 +321,15 @@
             color: var(--text-secondary);
             font-size: 1.1rem;
             margin-bottom: 3rem;
+            
         }
 
         .resume-buttons {
             display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
         }
 
         .resume-btn {
@@ -341,6 +345,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0; /* Aggiunto per evitare che i pulsanti si restringano */
         }
 
         .resume-btn:hover {
@@ -400,7 +405,6 @@
     <div class="grain"></div>
     
     <nav>
-        <div class="logo">VLAD ROTARU</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Work</a></li>
@@ -412,7 +416,8 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Vlad Rotaru</h1>
-            <p class="subtitle">Data Analyst & Finance Professional</p>
+           <!-- <p class="subtitle">Data Analyst & Finance Professional</p>-->
+            <p class="subtitle">Driven by Curiosity & Improvement</p>
             <div class="cta-container">
                 <a href="work.html" class="btn btn-primary">View Experience</a>
                 <a href="#resume" class="btn btn-secondary">Download Resume</a>
@@ -442,14 +447,18 @@
             <a href="projects.html" class="card-link">View Projects</a>
         </div>
 
+<!--
+
         <div class="card">
             <span class="card-icon">📊</span>
             <h2>Skills</h2>
             <p>SQL, Power BI, Excel, VBA, data analysis, financial reporting, and process optimization expertise.</p>
             <a href="work.html" class="card-link">See Details</a>
         </div>
-    </div>
-
+    
+-->
+        </div>
+    
     <section class="resume-section" id="resume">
         <h2>Download Resume</h2>
         <p>Choose your preferred language version</p>
@@ -466,8 +475,10 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Vlad Rotaru. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.6;">Sito gestito da studiovacchini@gmail.com</p>
+       <!-- <p>Vlad Rotaru | Since 2000</p> -->
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
     </footer>
+
 </body>
 </html>
