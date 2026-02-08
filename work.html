@@ -52,7 +52,6 @@
             padding: 2rem 4rem;
             display: flex;
             justify-content: center;
-
             align-items: center;
             z-index: 100;
             background: rgba(232, 235, 233, 0.95);
@@ -70,14 +69,6 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            letter-spacing: 1px;
         }
 
         .nav-links {
@@ -116,10 +107,9 @@
         }
 
         .page-header {
-            padding: 12rem 4rem 6rem;
+            padding: 12rem 4rem 4rem;
             text-align: center;
             animation: fadeInUp 1s ease-out;
-            
         }
 
         @keyframes fadeInUp {
@@ -148,21 +138,25 @@
             font-weight: 300;
         }
 
-        .timeline-arrow {
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 4rem 8rem;
             position: relative;
-            display: flex;
-            justify-content: center;
-            z-index: 10;
-            margin-bottom: 4rem; /* aumentato spazio sotto */
-            padding-top: 1rem;
+        }
+
+        .timeline-arrow {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
         }
 
         .arrow-container {
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             align-items: center;
+            gap: 0.5rem;
             animation: pulse 2s ease-in-out infinite;
-            gap: 0.5rem; /* spazio tra freccia e testo */
         }
 
         .arrow-head {
@@ -177,32 +171,24 @@
             font-weight: 600;
             letter-spacing: 2px;
             color: var(--accent);
-            padding-bottom: 1rem; /* spazio sotto il testo */
         }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-5px);
-        opacity: 0.7;
-    }
-}
-
-    .timeline {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 2rem 4rem 8rem; /* ridotto padding-top */
-        position: relative;
-    }
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-5px);
+                opacity: 0.7;
+            }
+        }
 
         .timeline::before {
             content: '';
             position: absolute;
             left: 50%;
-            top: 120px; /* aumentato per evitare sovrapposizione */
+            top: 120px;
             bottom: 100px;
             width: 2px;
             background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
@@ -215,11 +201,11 @@
             animation: fadeInUp 0.8s ease-out both;
         }
 
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.5s; }
 
         .timeline-item:nth-child(odd) .content {
             margin-left: auto;
@@ -360,20 +346,45 @@
             opacity: 0.7;
         }
 
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-                top: 120px; /* stesso valore */
-                bottom: 60px;
-            }
-
-            .timeline-dot {
-                left: 20px;
+        @media (max-width: 968px) {
+            .timeline {
+                padding: 2rem 2rem 8rem;
             }
 
             .timeline-arrow {
-                justify-content: flex-start;
-                padding-left: 0;
+                margin-bottom: 4rem;
+            }
+
+            /* Timeline centrale su tablet/mobile */
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 100px;
+            }
+
+            .timeline-arrow {
+                text-align: center;
+            }
+
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:hover .timeline-dot {
+                transform: translateX(-50%) scale(1.2);
+            }
+
+            /* Blocchi full-width */
+            .timeline-item:nth-child(odd) .content,
+            .timeline-item:nth-child(even) .content {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .content {
+                padding: 2.5rem;
             }
         }
 
@@ -389,7 +400,7 @@
             }
 
             .page-header {
-                padding: 8rem 2rem 4rem;
+                padding: 8rem 2rem 3rem;
             }
 
             .page-header h1 {
@@ -397,25 +408,47 @@
             }
 
             .timeline {
-                padding: 2rem 2rem 4rem;
+                padding: 2rem 1.5rem 4rem;
             }
 
+            .timeline-arrow {
+                margin-bottom: 4rem;
+            }
+
+            /* Timeline centrale su mobile */
             .timeline::before {
-                left: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 100px;
+            }
+
+            .timeline-arrow {
+                text-align: center;
             }
 
             .timeline-dot {
-                left: 20px;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
+            .timeline-item:hover .timeline-dot {
+                transform: translateX(-50%) scale(1.2);
+            }
+
+            /* Blocchi full-width */
             .timeline-item:nth-child(odd) .content,
             .timeline-item:nth-child(even) .content {
-                width: calc(100% - 4rem);
-                margin-left: 4rem;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
             }
 
             .content {
                 padding: 2rem;
+            }
+
+            .content h2 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -424,7 +457,6 @@
     <div class="grain"></div>
     
     <nav>
-    <!--    <div class="logo">VLAD ROTARU</div> -->
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Work</a></li>
@@ -438,15 +470,14 @@
         <p>A glance on my professional journey</p>
     </div>
 
-
-
-<div class="timeline">
-    <div class="timeline-arrow">
-        <div class="arrow-container">
-            <div class="arrow-head">▲</div>
-            <span class="timeline-label">PRESENT</span>
+    <div class="timeline">
+        <div class="timeline-arrow">
+            <div class="arrow-container">
+                <div class="arrow-head">▲</div>
+                <span class="timeline-label">PRESENT</span>
+            </div>
         </div>
-    </div>
+
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="content">
@@ -483,7 +514,7 @@
                 
                 <div class="role">
                     <h3>Hub System and Yard Controller Assistant</h3>
-                    <span class="date">November 2022 - Present</span>
+                    <span class="date">November 2022 - October 2024</span>
                     <ul>
                         <li>Bridging planning, transport and operations departments, ensuring seamless coordination</li>
                         <li>Managing SQL server's data and utilizing Excel, VBA, SQL and Power BI for report generation</li>
