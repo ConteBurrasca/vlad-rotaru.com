@@ -52,7 +52,6 @@
             padding: 2rem 4rem;
             display: flex;
             justify-content: center;
-
             align-items: center;
             z-index: 100;
             background: rgba(232, 235, 233, 0.95);
@@ -70,14 +69,6 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            letter-spacing: 1px;
         }
 
         .nav-links {
@@ -116,7 +107,7 @@
         }
 
         .page-header {
-            padding: 12rem 4rem 6rem;
+            padding: 12rem 4rem 4rem;
             text-align: center;
             animation: fadeInUp 1s ease-out;
         }
@@ -147,115 +138,162 @@
             font-weight: 300;
         }
 
-        .education-container {
-            max-width: 1200px;
+        .timeline {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 4rem 8rem;
+            padding: 2rem 4rem 8rem;
+            position: relative;
         }
 
-        .education-card {
-            background: #f5f7f6;
-            border-radius: 12px;
-            padding: 4rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .timeline-arrow {
+            text-align: center;
+            margin-bottom: 5rem;
             position: relative;
-            overflow: hidden;
+        }
+
+        .arrow-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .arrow-head {
+            font-size: 2rem;
+            color: var(--accent);
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(44, 95, 122, 0.3));
+            transform: rotate(180deg);
+        }
+
+        .timeline-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateY(0) rotate(180deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(5px) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 120px;
+            bottom: 100px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 6rem;
             animation: fadeInUp 0.8s ease-out both;
         }
 
-        .education-card:nth-child(1) { animation-delay: 0.1s; }
-        .education-card:nth-child(2) { animation-delay: 0.2s; }
-        .education-card:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.3s; }
 
-        .education-card::before {
-            content: '';
+        .timeline-dot {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 8px rgba(44, 95, 122, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .education-card:hover::before {
-            transform: scaleY(1);
+        .timeline-item:hover .timeline-dot {
+            background: var(--accent-light);
+            box-shadow: 0 0 0 12px rgba(44, 95, 122, 0.15);
+            transform: translateX(-50%) scale(1.2);
         }
 
-        .education-card:hover {
-            transform: translateX(8px);
+        .content {
+            width: 100%;
+            background: #f5f7f6;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .content:hover {
+            transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
-        .card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
         .institution-icon {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(44, 95, 122, 0.2);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        .card-title {
-            flex: 1;
-        }
-
-        .card-title h2 {
+        .content h2 {
             font-family: 'Inter', sans-serif;
             font-size: 2rem;
-            font-weight: 300;
+            font-weight: 400;
             color: var(--primary-dark);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
         }
 
-        .card-title h3 {
+        .content h3 {
             font-size: 1.3rem;
             color: var(--accent);
             font-weight: 500;
             margin-bottom: 1rem;
         }
 
-        .meta-info {
+        .date-location {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .meta-item {
+        .date, .location {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        .description {
+        .content > p {
             color: var(--text-secondary);
             line-height: 1.8;
-            font-size: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .highlights {
             margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .highlights h4 {
@@ -267,24 +305,27 @@
 
         .highlights ul {
             list-style: none;
-            padding: 0;
+            padding-left: 0;
         }
 
         .highlights li {
             position: relative;
-            padding-left: 1.8rem;
+            padding-left: 1.5rem;
             margin-bottom: 0.8rem;
             color: var(--text-secondary);
             line-height: 1.7;
         }
 
         .highlights li::before {
-            content: '✓';
+            content: '▸';
             position: absolute;
             left: 0;
             color: var(--accent);
             font-weight: bold;
-            font-size: 1.2rem;
+        }
+
+        .badges {
+            margin-top: 1.5rem;
         }
 
         .badge {
@@ -295,8 +336,8 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-top: 1rem;
             margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         footer {
@@ -311,6 +352,24 @@
             opacity: 0.7;
         }
 
+        @media (max-width: 968px) {
+            .timeline {
+                padding: 2rem 2rem 8rem;
+            }
+
+            .timeline-arrow {
+                margin-bottom: 4rem;
+            }
+
+            .timeline::before {
+                top: 100px;
+            }
+
+            .content {
+                padding: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 1.5rem 2rem;
@@ -323,37 +382,34 @@
             }
 
             .page-header {
-                padding: 8rem 2rem 4rem;
+                padding: 8rem 2rem 3rem;
             }
 
             .page-header h1 {
                 font-size: 2.5rem;
             }
 
-            .education-container {
-                padding: 2rem 2rem 4rem;
+            .timeline {
+                padding: 2rem 1.5rem 4rem;
             }
 
-            .education-card {
-                padding: 2.5rem 2rem;
+            .timeline-arrow {
+                margin-bottom: 4rem;
             }
 
-            .card-header {
-                flex-direction: column;
-                gap: 1.5rem;
+            .timeline::before {
+                top: 100px;
             }
 
-            .institution-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
+            .content {
+                padding: 2rem;
             }
 
-            .card-title h2 {
-                font-size: 1.8rem;
+            .content h2 {
+                font-size: 1.6rem;
             }
 
-            .card-title h3 {
+            .content h3 {
                 font-size: 1.1rem;
             }
         }
@@ -363,7 +419,6 @@
     <div class="grain"></div>
     
     <nav>
-        <!--<div class="logo">VLAD ROTARU</div>-->
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Work</a></li>
@@ -377,104 +432,105 @@
         <p>My academic journey and continuous learning path</p>
     </div>
 
-    <div class="education-container">
-        <div class="education-card">
-            <div class="card-header">
-                <div class="institution-icon">🎓</div>
-                <div class="card-title">
-                    <h2>Google Data Analytics Professional Certificate</h2>
-                    <h3>Google Career Certificates via Coursera</h3>
-                    <div class="meta-info">
-                        <span class="meta-item">📅 2023</span>
-                        <span class="meta-item">🌐 Online</span>
-                    </div>
-                </div>
-            </div>
-            <div class="description">
-                <p>Comprehensive program covering the entire data analysis process, from asking questions to making data-driven decisions. Gained hands-on experience with industry-standard tools and methodologies used by professional data analysts.</p>
-            </div>
-            <div class="highlights">
-                <h4>Key Learning Areas:</h4>
-                <ul>
-                    <li>Data collection, cleaning, and organization techniques</li>
-                    <li>Data analysis using spreadsheets and SQL</li>
-                    <li>Data visualization with Tableau and R programming</li>
-                    <li>Statistical analysis and problem-solving strategies</li>
-                    <li>Communicating insights through compelling data stories</li>
-                </ul>
-            </div>
-            <div>
-                <span class="badge">SQL</span>
-                <span class="badge">Data Analysis</span>
-                <span class="badge">Tableau</span>
-                <span class="badge">R Programming</span>
-                <span class="badge">Data Visualization</span>
+    <div class="timeline">
+        <div class="timeline-arrow">
+            <div class="arrow-container">
+                <div class="arrow-head">▲</div>
+                <span class="timeline-label">PAST</span>
             </div>
         </div>
 
-        <div class="education-card">
-            <div class="card-header">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
                 <div class="institution-icon">🏫</div>
-                <div class="card-title">
-                    <h2>IT Technical High School Diploma</h2>
-                    <h3>Istituto Tecnico Industriale (ITI)</h3>
-                    <div class="meta-info">
-                        <span class="meta-item">📅 2015 - 2020</span>
-                        <span class="meta-item">📍 Milan, Italy</span>
-                    </div>
+                <h2>IT Technical High School Diploma</h2>
+                <h3>Istituto Tecnico Industriale (ITI)</h3>
+                <div class="date-location">
+                    <span class="date">📅 2015 - 2020</span>
+                    <span class="location">📍 Milan, Italy</span>
                 </div>
-            </div>
-            <div class="description">
                 <p>Five-year specialized program in Information Technology, providing a strong foundation in computer science, programming, and systems management. The curriculum combined theoretical knowledge with practical hands-on projects and industry apprenticeships.</p>
-            </div>
-            <div class="highlights">
-                <h4>Core Competencies:</h4>
-                <ul>
-                    <li>Object-oriented programming fundamentals</li>
-                    <li>Database design and management</li>
-                    <li>Computer networks and systems architecture</li>
-                    <li>Web development and software engineering principles</li>
-                    <li>Completed industry apprenticeships with Lynx SPA and RC-Solution</li>
-                </ul>
-            </div>
-            <div>
-                <span class="badge">Programming</span>
-                <span class="badge">Databases</span>
-                <span class="badge">Networks</span>
-                <span class="badge">Systems Analysis</span>
+                
+                <div class="highlights">
+                    <h4>Core Competencies:</h4>
+                    <ul>
+                        <li>Object-oriented programming fundamentals</li>
+                        <li>Database design and management</li>
+                        <li>Computer networks and systems architecture</li>
+                        <li>Web development and software engineering principles</li>
+                        <li>Completed industry apprenticeships with Lynx SPA and RC-Solution</li>
+                    </ul>
+                </div>
+                <div class="badges">
+                    <span class="badge">Programming</span>
+                    <span class="badge">Databases</span>
+                    <span class="badge">Networks</span>
+                    <span class="badge">Systems Analysis</span>
+                </div>
             </div>
         </div>
 
-        <div class="education-card">
-            <div class="card-header">
-                <div class="institution-icon">📚</div>
-                <div class="card-title">
-                    <h2>Continuous Professional Development</h2>
-                    <h3>Self-Directed Learning & Industry Training</h3>
-                    <div class="meta-info">
-                        <span class="meta-item">📅 Ongoing</span>
-                        <span class="meta-item">🌐 Various Platforms</span>
-                    </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="institution-icon">🎓</div>
+                <h2>Google Data Analytics Professional Certificate</h2>
+                <h3>Google Career Certificates via Coursera</h3>
+                <div class="date-location">
+                    <span class="date">📅 2023</span>
+                    <span class="location">🌐 Online</span>
+                </div>
+                <p>Comprehensive program covering the entire data analysis process, from asking questions to making data-driven decisions. Gained hands-on experience with industry-standard tools and methodologies used by professional data analysts.</p>
+                
+                <div class="highlights">
+                    <h4>Key Learning Areas:</h4>
+                    <ul>
+                        <li>Data collection, cleaning, and organization techniques</li>
+                        <li>Data analysis using spreadsheets and SQL</li>
+                        <li>Data visualization with Tableau and R programming</li>
+                        <li>Statistical analysis and problem-solving strategies</li>
+                        <li>Communicating insights through compelling data stories</li>
+                    </ul>
+                </div>
+                <div class="badges">
+                    <span class="badge">SQL</span>
+                    <span class="badge">Data Analysis</span>
+                    <span class="badge">Tableau</span>
+                    <span class="badge">R Programming</span>
+                    <span class="badge">Data Visualization</span>
                 </div>
             </div>
-            <div class="description">
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="institution-icon">📚</div>
+                <h2>Continuous Professional Development</h2>
+                <h3>Self-Directed Learning & Industry Training</h3>
+                <div class="date-location">
+                    <span class="date">📅 Ongoing</span>
+                    <span class="location">🌐 Various Platforms</span>
+                </div>
                 <p>Committed to staying current with emerging technologies and industry best practices through continuous learning. Regularly engaging with professional development resources to enhance technical and analytical capabilities.</p>
-            </div>
-            <div class="highlights">
-                <h4>Focus Areas:</h4>
-                <ul>
-                    <li>Advanced Excel and VBA automation techniques</li>
-                    <li>Power BI dashboard design and development</li>
-                    <li>SQL query optimization and database management</li>
-                    <li>Business intelligence and data warehousing concepts</li>
-                    <li>Process improvement and operational efficiency methodologies</li>
-                </ul>
-            </div>
-            <div>
-                <span class="badge">Excel VBA</span>
-                <span class="badge">Power BI</span>
-                <span class="badge">Advanced SQL</span>
-                <span class="badge">Process Optimization</span>
+                
+                <div class="highlights">
+                    <h4>Focus Areas:</h4>
+                    <ul>
+                        <li>Advanced Excel and VBA automation techniques</li>
+                        <li>Power BI dashboard design and development</li>
+                        <li>SQL query optimization and database management</li>
+                        <li>Business intelligence and data warehousing concepts</li>
+                        <li>Process improvement and operational efficiency methodologies</li>
+                    </ul>
+                </div>
+                <div class="badges">
+                    <span class="badge">Excel VBA</span>
+                    <span class="badge">Power BI</span>
+                    <span class="badge">Advanced SQL</span>
+                    <span class="badge">Process Optimization</span>
+                </div>
             </div>
         </div>
     </div>
