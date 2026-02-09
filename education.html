@@ -164,7 +164,6 @@
             color: var(--accent);
             line-height: 1;
             filter: drop-shadow(0 2px 4px rgba(44, 95, 122, 0.3));
-            transform: rotate(180deg);
         }
 
         .timeline-label {
@@ -176,11 +175,11 @@
 
         @keyframes pulse {
             0%, 100% {
-                transform: translateY(0) rotate(180deg);
+                transform: translateY(0);
                 opacity: 1;
             }
             50% {
-                transform: translateY(5px) rotate(180deg);
+                transform: translateY(-5px);
                 opacity: 0.7;
             }
         }
@@ -205,6 +204,7 @@
         .timeline-item:nth-child(2) { animation-delay: 0.1s; }
         .timeline-item:nth-child(3) { animation-delay: 0.2s; }
         .timeline-item:nth-child(4) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.4s; }
 
         .timeline-dot {
             position: absolute;
@@ -436,37 +436,84 @@
         <div class="timeline-arrow">
             <div class="arrow-container">
                 <div class="arrow-head">▲</div>
-                <span class="timeline-label">PAST</span>
+                <span class="timeline-label">PRESENT</span>
             </div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="content">
-                <div class="institution-icon">🏫</div>
-                <h2>IT Technical High School Diploma</h2>
-                <h3>Istituto Tecnico Industriale (ITI)</h3>
+                <div class="institution-icon">🎬</div>
+                <h2>Audiovisual Production & Broadcasting Specialization</h2>
+                <h3>Professional Training - Live Events & Television Production</h3>
                 <div class="date-location">
-                    <span class="date">📅 2015 - 2020</span>
-                    <span class="location">📍 Milan, Italy</span>
+                    <span class="date">📅 2024 - 2026</span>
+                    <span class="location">📍 Italy</span>
                 </div>
-                <p>Five-year specialized program in Information Technology, providing a strong foundation in computer science, programming, and systems management. The curriculum combined theoretical knowledge with practical hands-on projects and industry apprenticeships.</p>
+                <p>Comprehensive professional experience in live events and television production environments, specializing in video operations, LED wall management, and broadcasting systems. Hands-on training acquired through collaborations with Mediaset and high-profile television productions.</p>
                 
                 <div class="highlights">
-                    <h4>Core Competencies:</h4>
+                    <h4>Technical Competencies:</h4>
                     <ul>
-                        <li>Object-oriented programming fundamentals</li>
-                        <li>Database design and management</li>
-                        <li>Computer networks and systems architecture</li>
-                        <li>Web development and software engineering principles</li>
-                        <li>Completed industry apprenticeships with Lynx SPA and RC-Solution</li>
+                        <li>Professional video operator with extensive knowledge of LED walls and video systems</li>
+                        <li>Professional software management: Resolume for video mapping and vMix for live streaming and production</li>
+                        <li>Video control system configuration and management using NovaLCT</li>
+                        <li>PowerPoint operator for television productions and live events</li>
+                        <li>Comprehensive knowledge of broadcast video systems and their configuration</li>
+                    </ul>
+                </div>
+
+                <div class="highlights">
+                    <h4>Television Production Experience:</h4>
+                    <ul>
+                        <li>Collaborations with Mediaset on leading national programs</li>
+                        <li>Entertainment shows: Le Iene, Le Iene Inside, Striscia la Notizia, Io Canto, Caduta Libera</li>
+                        <li>News programs: TGCom24, Dentro la Notizia, Quattro di Sera, Dritto e Rovescio, Zona Bianca</li>
+                        <li>Sports & morning shows: Pressing, Mattino Cinque, Mattino Quattro</li>
+                        <li>Technical management of television environments and live production workflows</li>
+                    </ul>
+                </div>
+
+                <div class="badges">
+                    <span class="badge">Resolume</span>
+                    <span class="badge">vMix</span>
+                    <span class="badge">NovaLCT</span>
+                    <span class="badge">Video Operations</span>
+                    <span class="badge">LED Management</span>
+                    <span class="badge">PowerPoint</span>
+                    <span class="badge">Broadcasting</span>
+                    <span class="badge">Live Production</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="content">
+                <div class="institution-icon">📚</div>
+                <h2>Continuous Professional Development</h2>
+                <h3>Self-Directed Learning & Industry Training</h3>
+                <div class="date-location">
+                    <span class="date">📅 2023 - 2024</span>
+                    <span class="location">🌐 Various Platforms</span>
+                </div>
+                <p>Committed to staying current with emerging technologies and industry best practices through continuous learning. Regularly engaging with professional development resources to enhance technical and analytical capabilities.</p>
+                
+                <div class="highlights">
+                    <h4>Focus Areas:</h4>
+                    <ul>
+                        <li>Advanced Excel and VBA automation techniques</li>
+                        <li>Power BI dashboard design and development</li>
+                        <li>SQL query optimization and database management</li>
+                        <li>Business intelligence and data warehousing concepts</li>
+                        <li>Process improvement and operational efficiency methodologies</li>
                     </ul>
                 </div>
                 <div class="badges">
-                    <span class="badge">Programming</span>
-                    <span class="badge">Databases</span>
-                    <span class="badge">Networks</span>
-                    <span class="badge">Systems Analysis</span>
+                    <span class="badge">Excel VBA</span>
+                    <span class="badge">Power BI</span>
+                    <span class="badge">Advanced SQL</span>
+                    <span class="badge">Process Optimization</span>
                 </div>
             </div>
         </div>
@@ -506,30 +553,30 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="content">
-                <div class="institution-icon">📚</div>
-                <h2>Continuous Professional Development</h2>
-                <h3>Self-Directed Learning & Industry Training</h3>
+                <div class="institution-icon">🏫</div>
+                <h2>IT Technical High School Diploma</h2>
+                <h3>Istituto Tecnico Industriale (ITI)</h3>
                 <div class="date-location">
-                    <span class="date">📅 Ongoing</span>
-                    <span class="location">🌐 Various Platforms</span>
+                    <span class="date">📅 2015 - 2020</span>
+                    <span class="location">📍 Milan, Italy</span>
                 </div>
-                <p>Committed to staying current with emerging technologies and industry best practices through continuous learning. Regularly engaging with professional development resources to enhance technical and analytical capabilities.</p>
+                <p>Five-year specialized program in Information Technology, providing a strong foundation in computer science, programming, and systems management. The curriculum combined theoretical knowledge with practical hands-on projects and industry apprenticeships.</p>
                 
                 <div class="highlights">
-                    <h4>Focus Areas:</h4>
+                    <h4>Core Competencies:</h4>
                     <ul>
-                        <li>Advanced Excel and VBA automation techniques</li>
-                        <li>Power BI dashboard design and development</li>
-                        <li>SQL query optimization and database management</li>
-                        <li>Business intelligence and data warehousing concepts</li>
-                        <li>Process improvement and operational efficiency methodologies</li>
+                        <li>Object-oriented programming fundamentals</li>
+                        <li>Database design and management</li>
+                        <li>Computer networks and systems architecture</li>
+                        <li>Web development and software engineering principles</li>
+                        <li>Completed industry apprenticeships with Lynx SPA and RC-Solution</li>
                     </ul>
                 </div>
                 <div class="badges">
-                    <span class="badge">Excel VBA</span>
-                    <span class="badge">Power BI</span>
-                    <span class="badge">Advanced SQL</span>
-                    <span class="badge">Process Optimization</span>
+                    <span class="badge">Programming</span>
+                    <span class="badge">Databases</span>
+                    <span class="badge">Networks</span>
+                    <span class="badge">Systems Analysis</span>
                 </div>
             </div>
         </div>
