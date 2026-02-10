@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Dashboard - Vlad Rotaru</title>
+    <title>Vlad's Space</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
         }
 
         :root {
@@ -37,6 +42,8 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .grain {
@@ -66,17 +73,6 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .nav-links {
@@ -156,38 +152,10 @@
             letter-spacing: -1px;
         }
 
-        .page-header p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-            letter-spacing: 0.3px;
-            line-height: 1.8;
-            max-width: 800px;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .meta-item strong {
-            color: var(--accent);
-        }
-
         /* ===== ENTRIES GRID ===== */
         .entries-section {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 4rem;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
@@ -195,17 +163,10 @@
             margin-bottom: 2rem;
         }
 
-        .section-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-
         .section-header p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
         .entries-grid {
@@ -295,15 +256,33 @@
             color: white;
             padding: 3rem 4rem;
             text-align: center;
-            margin-top: 6rem;
+            margin: 0;
+            width: 100%;
         }
 
         footer p {
             font-size: 0.9rem;
             opacity: 0.7;
+            margin: 0;
+        }
+
+        footer p:last-child {
+            margin-top: 0.5rem;
+            opacity: 0.6;
         }
 
         /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -341,10 +320,6 @@
                 font-size: 2.5rem;
             }
 
-            .page-header p {
-                font-size: 1rem;
-            }
-
             .entries-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -354,9 +329,8 @@
                 padding: 1.2rem;
             }
 
-            .project-meta {
-                flex-direction: column;
-                gap: 1rem;
+            footer {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -378,135 +352,148 @@
     <div class="main-container">
         <div class="page-header">
             <a href="projects.html" class="back-link">Back to Projects</a>
-            
-            <h1>My PSA - Personal Stories Archive</h1>
-            <p>If you entered this page after inspecting the previous one and finding the password, well... you must be pretty disappointed</p>
-            
+            <h1>Esercizi di stile</h1>
         </div>
 
+        <!-- 2021 -->
         <div class="entries-section">
             <div class="section-header">
                 <p>2021</p>
             </div>
-
             <div class="entries-grid">
-                <!-- Sample entries - you can add as many as needed -->
+                <a href="8_mani.html" class="entry-card">
+                    <span class="entry-date">Aprile 2021</span>
+                    <h3 class="entry-title">Mani</h3>
+                    <span class="entry-arrow">→</span>
+                </a>
+                <a href="11_malcolm.html" class="entry-card">
+                    <span class="entry-date">Luglio 2021</span>
+                    <h3 class="entry-title">Malcolm</h3>
+                    <span class="entry-arrow">→</span>
+                </a>
                 <a href="1_deserto.html" class="entry-card">
-                    <span class="entry-date">Oct 2021</span>
+                    <span class="entry-date">Ottobre 2021</span>
                     <h3 class="entry-title">Deserto</h3>
                     <span class="entry-arrow">→</span>
                 </a>
+            </div>
+        </div>
 
- <!--               <a href="entry-detail.html?id=2" class="entry-card">
-                    <span class="entry-date">Jan 2024</span>
-                    <h3 class="entry-title">Customer Segmentation & Behavior Patterns</h3>
+        <!-- 2022 -->
+        <div class="entries-section">
+            <div class="section-header">
+                <p>2022</p>
+            </div>
+            <div class="entries-grid">
+                <a href="12_la_guerra_dei_bulloni.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2022</span>
+                    <h3 class="entry-title">La guerra dei bulloni</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=3" class="entry-card">
-                    <span class="entry-date">Dec 2023</span>
-                    <h3 class="entry-title">Inventory Optimization Dashboard</h3>
+                <a href="16_giovedì.html" class="entry-card">
+                    <span class="entry-date">Marzo 2022</span>
+                    <h3 class="entry-title">Giovedì</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=4" class="entry-card">
-                    <span class="entry-date">Dec 2023</span>
-                    <h3 class="entry-title">Marketing Campaign ROI Analysis</h3>
+                <a href="13_la_razza_viita.html" class="entry-card">
+                    <span class="entry-date">Giugno 2022</span>
+                    <h3 class="entry-title">La razza Viita</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=5" class="entry-card">
-                    <span class="entry-date">Nov 2023</span>
-                    <h3 class="entry-title">Supply Chain Efficiency Metrics</h3>
+                <a href="7_prigione.html" class="entry-card">
+                    <span class="entry-date">Agosto 2022</span>
+                    <h3 class="entry-title">Prigione</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=6" class="entry-card">
-                    <span class="entry-date">Nov 2023</span>
-                    <h3 class="entry-title">Product Performance Comparison</h3>
+                <a href="10_sogno.html" class="entry-card">
+                    <span class="entry-date">Settembre 2022</span>
+                    <h3 class="entry-title">Sogno</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=7" class="entry-card">
-                    <span class="entry-date">Oct 2023</span>
-                    <h3 class="entry-title">Regional Sales Territory Analysis</h3>
+                <a href="18_diari_di_rocca.html" class="entry-card">
+                    <span class="entry-date">Ottobre 2022</span>
+                    <h3 class="entry-title">Ricostruzione dei diari del Sig. Rocca</h3>
+                    <span class="entry-arrow">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="entries-section">
+            <div class="section-header">
+                <p>2023</p>
+            </div>
+            <div class="entries-grid">
+                <a href="9_kunis.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2023</span>
+                    <h3 class="entry-title">Kuni's</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=8" class="entry-card">
-                    <span class="entry-date">Oct 2023</span>
-                    <h3 class="entry-title">Employee Productivity Tracking</h3>
+                <a href="17_utopia_robotica.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2023</span>
+                    <h3 class="entry-title">Discorso qualunquista su un'utopia robotica</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=9" class="entry-card">
-                    <span class="entry-date">Sep 2023</span>
-                    <h3 class="entry-title">Financial Forecasting Model</h3>
+                <a href="15_mentire_a_se_stessi.html" class="entry-card">
+                    <span class="entry-date">Febbraio 2023</span>
+                    <h3 class="entry-title">Mentire a sé stessi</h3>
                     <span class="entry-arrow">→</span>
                 </a>
 
-                <a href="entry-detail.html?id=10" class="entry-card">
-                    <span class="entry-date">Sep 2023</span>
-                    <h3 class="entry-title">Customer Retention Analysis</h3>
+                <a href="14_mille_miglia.html" class="entry-card">
+                    <span class="entry-date">Giugno 2023</span>
+                    <h3 class="entry-title">La città di Mille Miglia</h3>
                     <span class="entry-arrow">→</span>
                 </a>
+            </div>
+        </div>
 
-                <a href="entry-detail.html?id=11" class="entry-card">
-                    <span class="entry-date">Aug 2023</span>
-                    <h3 class="entry-title">Profit Margin Optimization</h3>
+        <!-- 2026 -->
+        <div class="entries-section">
+            <div class="section-header">
+                <p>2026</p>
+            </div>
+            <div class="entries-grid">
+                <a href="6_nessuno.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2026</span>
+                    <h3 class="entry-title">Nessuno - Dichiarazione d'intenti</h3>
                     <span class="entry-arrow">→</span>
                 </a>
-
-                <a href="entry-detail.html?id=12" class="entry-card">
-                    <span class="entry-date">Aug 2023</span>
-                    <h3 class="entry-title">Website Traffic & Conversion Analytics</h3>
+                <a href="4_il giorno_piu_freddo.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2026</span>
+                    <h3 class="entry-title">Il giorno più freddo - versione 1</h3>
                     <span class="entry-arrow">→</span>
                 </a>
-
-                <a href="entry-detail.html?id=13" class="entry-card">
-                    <span class="entry-date">Jul 2023</span>
-                    <h3 class="entry-title">Operational Cost Reduction Study</h3>
+                <a href="5_il giorno_piu_freddo.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2026</span>
+                    <h3 class="entry-title">Il giorno più freddo - versione 2</h3>
                     <span class="entry-arrow">→</span>
                 </a>
-
-                <a href="entry-detail.html?id=14" class="entry-card">
-                    <span class="entry-date">Jul 2023</span>
-                    <h3 class="entry-title">Market Trend Forecasting</h3>
+                <a href="3_la_moka_delle_otto.html" class="entry-card">
+                    <span class="entry-date">Gennaio 2026</span>
+                    <h3 class="entry-title">La moka delle otto</h3>
                     <span class="entry-arrow">→</span>
                 </a>
-
-                <a href="entry-detail.html?id=15" class="entry-card">
-                    <span class="entry-date">Jun 2023</span>
-                    <h3 class="entry-title">Competitive Analysis Dashboard</h3>
+                <a href="2_pausa_pranzo.html" class="entry-card">
+                    <span class="entry-date">Febbraio 2026</span>
+                    <h3 class="entry-title">Pausa pranzo</h3>
                     <span class="entry-arrow">→</span>
                 </a>
-
-                <a href="entry-detail.html?id=16" class="entry-card">
-                    <span class="entry-date">Jun 2023</span>
-                    <h3 class="entry-title">Quality Control Metrics Visualization</h3>
-                    <span class="entry-arrow">→</span>
-                </a>
-
-                <a href="entry-detail.html?id=17" class="entry-card">
-                    <span class="entry-date">May 2023</span>
-                    <h3 class="entry-title">Revenue Stream Analysis</h3>
-                    <span class="entry-arrow">→</span>
-                </a>
-
-                <a href="entry-detail.html?id=18" class="entry-card">
-                    <span class="entry-date">May 2023</span>
-                    <h3 class="entry-title">Department Budget Allocation</h3>
-                    <span class="entry-arrow">→</span>
-                </a>
-            -->
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Vlad Rotaru. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.6;">Sito gestito da studiovacchini@gmail.com</p>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p>info: contact@vlad-rotaru.com</p>
     </footer>
 </body>
 </html>
