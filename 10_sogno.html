@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - Sogno</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Settembre 2022</span>
+                <h1 class="entry-title">Sogno</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>La stanza era unicamente illuminata da un sottile raggio di luce di un sole primaverile, ancora indolenzito dal freddo secco di un marzo inoltrato. 
+L’unico quadro appeso, un dipinto di una stilizzata, ma fedele città di Genova, dondolava impercettibilmente dal solo chiodo che lo sosteneva.
+I colori del quadro, spenti e ormai tendenti ad un pallido ocra, stonavano molto con il resto della stanza. Con il blu acceso delle tende, il nero dell’armadio ed il bianco della scrivania.
+Perfino la strana tinta viola della moquette, scolorita dal passare degli anni, non era abbinabile a quei toni, ingialliti nei decenni.
+Il pittore, un certo “M. Nioretto”, aveva firmato la sua opera nell’angolo inferiore destro della tela con caratteri indecisi, ma leggibili. 
+“Sai come sono gli artisti” diceva mia madre “Alcuni di loro sono bravissimi a dipingere, a scolpire, ma in tutto il resto, anche a scrivere il proprio nome, gli vien la tremarella e sembra mano d’altri”.
+Ed in effetti sembrava il nome d’altri. 
+Quello di qualcuno che, dovendo vendere un vecchio quadro preso in un mercatino dell’usato, per completezza ci aveva pasticciato sopra il proprio pseudonimo, invece di quello dell’artista. 
+Si trattava di una vista dall’alto di una città soleggiata e medievaleggiante. Del suo porto, ricco di quelle vecchie ed imponenti navi mercantili e di uno scorcio su un gruppo di case, talmente numerose e vicine le une alle altre da domandarsi se quella città non fosse stata, in origine, progettata per cittadini alati.
+Il raggio di luce, adesso in compagnia di altri due, si era posato dapprima sullo schermo del computer sulla scrivania e poi sul muro bianco, al di sotto del vecchio quadro.
+Le particelle di polvere fluttuanti, ben visibili tra gli ormai molteplici filamenti luminosi penetrati attraverso la tapparella non completamente abbassata, mi stuzzicavano il naso ed un brivido mi corse lungo la schiena, convincendomi infine a spostare il mio corpo in posizione seduta.
+Fissai la tapparella per alcuni istanti e subito dopo i raggi luminosi, che sembravano dirigersi ordinatamente ed in fila indiana verso la porta chiusa.
+Una stanza semplice in una casa altrettanto semplice, un trilocale al terzo piano di un condominio in una cittadina tranquilla.
+Allo stesso modo, tranquilli erano i miei genitori e tranquilla era la nostra vita.
+Non noiosa, tranquilla.
+
+Per un istante ripensai al sogno della notte precedente, ma non ci detti molto peso.
+“Sogni simili capitano, quando si è stressati” mi aveva detto un amico a scuola, un paio di settimane prima.
+Si chiamava Bruno, e mi fidavo ciecamente di lui.
+“Anch’io facevo spesso incubi del genere, ma il mio psicologo dice che è normale.
+Magari sei in ansia per qualcosa o qualcuno in maniera inconscia e il tuo cervello sta riversando quei sentimenti nella tua mente quando dormi o roba così”.
+Bruno era quel genere di ragazzino a cui è capitato qualcosa di veramente tremendo quando era piccolo, ma che, attraverso anni di terapia, alla fine è riuscito a sconfiggere l’ansia di un trauma molto violento e adesso, magari, lo vedi anche passare di tanto in tanto con un mazzo di fiori in mano, diretto verso il cimitero.
+Avevo quest’immagine in testa di lui, anche se non era affatto fondata.
+Non l’avevo mai visto con dei fiori in mano, né tanto meno dirigersi al cimitero, ma ero certo che fosse uno saggio. Uno di quei saggi che lo è diventato per bisogno, non per amore della saggezza.
+Non che i sogni che facevo mi preoccupassero, a dire il vero, o che pensassi di aver bisogno di qualcuno con cui parlarne. Li raccontavo a Bruno solamente per abitudine, da quando una volta, lui mi raccontò di aver sognato di baciare Camilla, del quarto anno.
+
+La cucina era ben illuminata mentre masticavo in silenzio i cereali e sorbivo il latte dalla ciotola, scimmiottando un gentiluomo inglese che avevo visto fare lo stesso con il té, in un qualche programma in tv.
+Giocherellando con pochi chicchi rimasti a galleggiare, mi dilettavo a creare immagini, al pari di come si fa quando ci si sdraia su un prato d’estate e si cercano forme nelle nuvole.
+Il sabato mattina mi piaceva per questo, per la tranquillità e per il silenzio. Perché tutto il rumore lo producevo io e non sentivo suono alcuno, se non il tubare dei piccioni ed il rumore delle macchine in strada.
+Mi sentivo isolato dal resto del mondo, staccato dalla ruvida realtà di una terza superiore, dalle voci di insegnanti e compagni di classe, genitori, vicini.
+Mi sdraiai sul divano in sala ed accesi la tv, ma la spessi poco dopo, portando il mio sguardo al soffitto.
+Alzai il braccio e presi a fissarmi la mano, la girai e la rigirai mentre immagini della notte prima riempivano la mia mente.
+Immagini di una larga e scheletrica mano grigia, attaccata ad un braccio lungo e magro proveniente dall’oscurità, nella quale si poteva intravedere parte di una sagoma umanoide.
+La mano picchiettava lentamente ed in maniera scandita  con le unghie lunghe ed affilate sulla scrivania, mentre un respiro affannoso proveniva dalla figura nel buio.
+Nel sogno il picchiettio era costante e ben scandito, come se l’essere stesse cercando di ingannare la noia mentre aspettava mi svegliassi, ma io ero conscio e non osavo muovermi.
+Ero paralizzato e cercavo di fargli credere che stessi ancora dormendo, ma lui sapeva e si burlava di me, facendo finta di non essersene accorto.
+Il mio cuore batteva all’impazzata e i miei respiri si fecero più veloci, mentre gocce di sudore freddo mi si accumulavano in fronte.
+Avevo gli occhi aperti da diversi secondi ed il mostro sorrideva, mentre il mio corpo completamente irrigidito, era incapace di compiere alcun movimento.
+Il suo sorriso si trasformò in un ghigno ed infine in una risata soffocata.
+Lentamente, una seconda mano, mostruosa quanto la prima, si tirò fuori dall’angolo oscuro della stanza, appoggiandosi sul letto, accanto al mio piede destro.
+La risata si fece più intensa e più forzatamente trattenuta, mentre l’abominio si alzava in piedi, per quanto la sua stazza smisurata gli impedisse di stare dritto nella camera per tutta la sua altezza.
+Curvo sulla schiena scarna e consumata, il mostro respirava affannosamente e mi fissava negli occhi. Riuscivo a sentire il suo fiato sulla fronte, nonostante mi fosse ancora lontano.
+Poco alla volta e con fare tremante, avvicinò la sua testa alla mia, fin quando due file di denti fuori misura mi si fermarono ad un palmo dal naso.
+Aveva le labbra mangiate, le guance strappate ed aperte e pochi, neri ciuffi di capelli o peli gli correvano dalla cima della testa sul viso.
+Rise di nuovo e a bassa voce davanti ai miei occhi sgranati e completamente secchi, poi molto velocemente mi si staccò di dosso e si voltò.
+Con tutta la sua altezza e gli arti magri ed il corpo scarno si infilò attraverso la porta che, in confronto a lui, pareva un passaggio per nani e la lasciò socchiusa.
+Dopo un minuto non si sentiva più niente, ma io ero comunque immobile e tremante e non mi mossi prima di essermi tranquillizzato. 
+Alcuni istanti dopo tirai un piccolo sospiro di sollievo ed in quel momento si udì il respiro ancora più affannoso, ed un forte rumore di denti digrignati.
+Una mano si ri-infilò nella stanza, afferrò la porta dal lato e la aprì, rivelando il più inquietante dei sorrisi, poi la chiuse con forza, facendola sbattere e staccandosi di netto dal braccio.
+
+
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

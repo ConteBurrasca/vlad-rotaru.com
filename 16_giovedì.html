@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - Giovedì</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Marzo 2022</span>
+                <h1 class="entry-title">Giovedì</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>Tutto ha inizio un certo giovedì sera.
+Stavo ragionando col mio amico Rendy sul fatto che io potessi essere morto. 
+Il che sarebbe pienamente giustificato se quello fosse stato uno di tanti altri giovedì sera spesi con Rendy, ma questa volta c’era un dettaglio che mi continuava a punzecchiare: nessuno di noi aveva ancora toccato alcol.
+In realtà, non toccavamo alcol da parecchio, date le nostre condizioni economiche pietose, ma per la prima volta, questa cosa accadde anche di giovedì, la sera in particolare.
+Io e Rendy tenevamo in vita la tradizione del giovedì sera alcolico da anni e per chissà quanto tempo non era mai successo che rimanessimo senza bere in quell’occasione, ragion per cui, Rendy stava svalvolando e, come al suo solito, quando è sobrio da troppo, stava anche straparlando, per evitare di pensare al suo peggior incubo: fare felice sua madre e, per una volta, passare un esame. Anche se in quest’occasione si sarebbe trattato di un test alcolemico (comunque un successo di un certo rilievo per gli standard di Rendy).
+<br><br>
+“Cioè non voglio passare subito a conclusioni affrettate, magari si è trattato solo di un sogno o di un qualche incubo ad occhi aperti, anche a me capita spesso di farmi i film mentali sulla mia morte, anche se continuare a sognare la scena della propria morte, che accade sempre nello stesso modo può essere inquietante, come può anche essere un indizio, magari un sogno premonitore, ma poi tu non l’hai mai avuta una moto.”.
+<br><br>
+Di solito Rendy si fermava per prendere fiato per qualche secondo tra una sessione logorroica e l’altra, prima di ripartire a macchinetta e con parole più veloci e confuse di prima.
+<br><br>
+“Ma poi cosa ti fa pensare che tu possa essere proprio morto? Magari hai davvero fatto un incidente e adesso sei in coma, in un mondo fittizio creato dalla tua mente per non farti impazzire facendoti passare il tempo in un perenne stato di oscurità e privazione sensoriale, che poi magari se ti concentri riesci a sentire le voci dei medici o delle infermiere che discutono sul quando sarà il caso che ti staccano la spina perchè sei solo un peso per la società e non hai nessuno che venga farti visita, nemmeno per il tuo compleanno.”.
+<br><br>
+Il giovedì sera con Rendy era uno spasso, specialmente quando non bevevamo.
+Bevevamo?
+Comunque Rendy mi faceva tremare dalle risate con quelle sue teorie pazze e campate per aria.
+<br><br>
+“Tipo ricordo di quella volta che ho pensato di essere morto io e mi sono chiesto cosa sarebbe successo poi e alla fine sono arrivato all’unica conclusione plausibile e sensata, ovvero che la storia va al contrario.”
+<br><br>
+…
+<br><br>
+“No, ti spiego, ha senso, in pratica il tempo ha inizio alla fine, ok? Con l’apocalisse.
+Cioè, tipo il big bang, no?
+Ecco, il big bang è il momento dell’apocalisse in realtà e tutti muoiono durante l’apocalisse, che in realtà è il big bang, chiaro, ovvio, alla fine chi è che sopravvive durante l’apocalisse? Nessuno! 
+E in pratica il tempo ha inizio tipo un secondo prima del big bang, cioè dell’apocalisse e ovviamente tutti muoiono, ma prima di morire, in quel secondo, tutti quanti hanno un flashback delle loro vite passate e iniziano a ricordare chi erano, o meglio, chi sarebbero stati nella loro vita passata. Un classico no?
+Vabbè, il punto è che anche nelle loro vite passate, queste persone, prima di morire, hanno un flashback della loro vita ancora prima e nell’arco di un secondo, la gente vive, invecchia, sta per morire e ha un ennesimo flashback di una vita passata e questa cosa va avanti fino all’inizio, stavolta, dei tempi, per miliardi di anni, fino a poco prima del big bang, che però, come abbiamo detto prima, è in realtà l’apocalisse e poco prima dell’apocalisse la gente sta per morire, perchè chi non muore durante l’apocalisse? Nessuno!
+E però, prima di morire, hanno, non più un flashback,ma un deja vu della loro vita futura, stavolta. E tutto ricomincia in un turbinio infinito di flashback e deja vu che va avanti per l’eternità e in realtà le persone che vivono sono sempre quelle e l’universo dura solo un secondo e-”
+<br><br>
+Rendy non finì mai di raccontare quella storia a causa di un improvviso risveglio su un lettino d’ospedale. Aveva fatto un incidente in moto ed aveva aperto gli occhi di venerdì mattina, di nuovo.
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

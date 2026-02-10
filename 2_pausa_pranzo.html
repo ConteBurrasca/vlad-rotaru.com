@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - Pausa Pranzo</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Febbraio 2026</span>
+                <h1 class="entry-title">Pausa pranzo</h1>
+                <p>Protagonisti: Studente universitario</p>
+                <p>Antagonista: Impiegato stressato</p> 
+                <p>Evento: Crispy mc Bacon a un euro</p>
+                <p>Plot twist: libero</p>
+                <p>Accompagnatore: un costante dubbio sulle proprie scelte</p>
+                <p>Genere: Realismo magico</p>
+            </div>
+            
+
+            <div class="entry-content">
+
+<p>Sul finire della pausa pranzo, Marco contava con crescente ansia: “Trentaquattro, trentacinque, trentasei…”.
+In condizioni differenti avrebbe continuato a studiare, la sessione invernale era vicina, ma quel giorno non poteva non distrarsi dalla quantità ingente di persone che passava l’entrata d’ingresso del MC Donald’s situato in via Cavour di Novara.
+Non si poteva certo dire che la professione di cassiere e cameriere fosse in cima alla lista delle sue passioni, ma ci si dovette adeguare diversi mesi prima per potersi permettere l’affitto per continuare a studiare.
+“Quaranta, quarantuno… quarantadue… Domani, ieri, il mese prossimo, Dio!”.
+Si sarebbe detto, in effetti, che Ronald il clown l’avesse fatto di proposito a scegliere il turno di Marco per proporre l’ultima delle sue offerte: Il Crispy a un solo euro.
+Quando la conta dei nuovi arrivati raggiunse la cinquantina, la pausa pranzo, quella di Marco almeno, finì, ma come un cerchio che si autocompleta, quella di Mauro iniziò.
+Mauro, già ben oltre il decimo richiamo per rientro tardivo dalla pausa pranzo in sei mesi, era un uomo orribilmente obeso.
+Risulta difficile in realtà stabilire quando tale condizione fosse iniziata, considerando i sessantatre chili dei suoi venticinque anni, la costante ginnastica e l’intensa attività cardiaca data dalle lunghe sessioni amorose con la sua ex-ragazza.
+Fatto sta che aveva ormai superato i trentadue anni, la sua bilancia riportava numeri in tripla cifra ed il suo cardiologo sudava al posto suo, per l’ansia di perdere un paziente così giovane.
+Il capo di Mauro era stato parecchio chiaro: “un solo minuto di ritardo, stavolta, e quella povera sedia su cui poltrisci tutto il giorno smetterà finalmente di avere il mal di schiena!”.
+“Cinquantatre, cinquantaquattro, cinquantacin-”.
+Marco interruppe la sua conta. Un gigantesco uomo, al centro della coda aveva preso a dimenarsi e destino vuole che anche lui stesse contando, non i clienti in coda quanto i minuti rimanenti alla pausa pranzo.
+“Scusi, la prego! Non è che potrei passare? Il mio capo mi licenzia se faccio rit- Ah! Grazie, grazie mille!”
+Da ben cinque minuti l’uomo cercava di passare avanti per riuscire a fare in tempo, ma le persone davanti a lui erano ancora diverse decine.
+“La prego, mi scusi. Non è che potre- Grazie! Grazie davvero!”
+Il cassiere serviva e guardava con la coda dell’occhio la folla di persone.
+Mauro sbucava con la testa e passava come poteva, in preda al panico e alla fame.
+Si direbbe che l’offerta, più unica che rara, avesse riscontrato più successo del previsto.
+“Settantasette, settantotto…”
+Il locale era ora pieno di persone, le une sempre più vicine alle altre.
+“Ottantatre, ottantaquattro…”
+“Dieci minuti! Vi prego, mancano solo dieci minuti alla fine della mia pausa!” Urlava ormai Mauro per cercare di passare oltre.
+Era diventato piuttosto difficile contare le persone a quel punto.
+“Centotre, centoqua-cinque-sei-sette! Ma quanti sono?!”
+Sempre più gente si riversava tra le mura del fast food e sempre più affannosamente Marco e Mauro si muovevano, L’uno servendo il più in fretta possibile, l’altro cercando di fare un passo in più in direzione della cassa.
+“Vi prego! Vi scongiuro!” urlava Mauro, ma la folla non faceva che aumentare e la conta non faceva che salire.
+“Duecento!”.
+I corpi erano così vicini da non riuscire quasi più a muoversi e le persone si spingevano dall’entrata fino in faccia a Marco, dietro la cassa.
+Quando il ragazzo si decise a dare un’occhio al di là di Mauro, verso la porta d’entrata, non riuscì a vedere la luce del sole.
+Le persone si erano accumulate davanti all’entrata, le une sopra le altre in una massa informe di corpi mossa da spintoni e versi.
+Ormai nessuno più spingeva. Le braccia, le gambe e le teste si muovevano all’unisono, come membra del corpo di un enorme animale deforme.
+In questo mare di esseri umani, Mauro prese a nuotare e si agganciò con il braccio al bancone della cassa.
+Marco urlò: “Buongiorno! Che cosa desidera!?”.
+Mauro rispose: “Io voglio un- vorrei un-” ma non riusciva a decidersi.
+“Da bere sicuramente una- ehm…”.
+Il suo braccio enorme stringeva con forza la cassa mentre il mare informe di corpi lo risucchiava via.
+“Oggi ho voglia di…”
+“Mi dica, l’ascolto…” Rispondeva il giovane cassiere, urlando per farsi sentire in mezzo al frastuono.
+“Mi andrebbe proprio un po’ di… avete qualche promozione per caso?”
+“Si!” urlò Marco. “Abbiamo i Crispy a un euro!".
+Il volto dell’impiegato si schiarì. 
+I due si guardarono negli occhi con intesa ed infine il gigante esclamò: “Sa cosa? Mi è passata la fame.”.
+Il corpo informe di esseri umani si arrestò d’un tratto ed emise un suono disumano.
+Iniziò a sfaldarsi e a ritirarsi. 
+Migliaia di esseri umani caddero in terra, dentro e fuori dal locale.
+La lancetta segnava le tredici.
+La pausa pranzo di Mauro era finita.
+Quindici minuti più tardi egli venne licenziato.
+
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

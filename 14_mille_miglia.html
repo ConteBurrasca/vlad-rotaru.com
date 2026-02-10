@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - La città di Mille Miglia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Giugno 2023</span>
+                <h1 class="entry-title">La città di Mille Miglia</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>Premessa<br><br>
+Decisi in principio di utilizzare nomi di fantasia per raccontare questa storia, dato che doveva essere un racconto puramente fantastico e desideravo immergermici io stesso.
+Ma dopo aver scritto alcuni capitoli ho realizzato che c’è molto più di me, nelle righe che seguiranno, di quanto avevo creduto prima di iniziare.
+Ragion per cui utilizzerò i veri nomi delle persone che ho incontrato e dei luoghi in cui sono stato.
+<br>
+Non me ne vogliano i miei amici.
+<br><br><br>
+Capitolo 1 - Introduzione alla città di Mille Miglia e arrivo in quest’ultima
+<br><br><br>
+Dicono, alcuni, la vita essere deludente. E lo dicono con molta disinvoltura e disillusione, in un vecchio bar di paese, per esempio.
+A metà bicchiere, a mezzanotte passata, per esempio.<br>
+E lo dicono poiché ci navigano da diverso tempo ormai, nella vita, e per molto altro tempo vi navigheranno e ad oggi non sembrano essere in grado di vedere un orizzonte, una linea d’arrivo, o di sosta quanto meno.<br>
+Alchè alcuni, in mancanza di punti di riferimento danno di matto, e iniziano ad inventarsi che c’è, in realtà, un grande obiettivo. <br>
+Esiste una cosa, un’impresa che bisogna compiere.<br>
+E quest’impresa va realizzata in un posto, lontanissimo, in cui bisogna arrivare.
+<br><br>
+Quando ci venni per la prima volta, non sapevo questa fosse la città di Mille Miglia. O meglio, non sapevo dell’esistenza della stessa, né tanto meno la immaginavo.<br>
+Ѐ un luogo strano, questo. <br>
+Se solamente non fossi un incurabile scettico direi o avrei detto, da moltissimo tempo, che questa città nasconde qualcosa d’inspiegabile nelle sue viscere, in profondità nei suoi sotterranei e nei canali.
+Mi è di non facile compito descrivere ciò che ho vissuto, ma sono divorato e consumato dalla necessità di raccontare di questo luogo, dei suoi suoi abitanti e della desolazione delle anime che ho incontrato.
+Ѐ a causa della mia noncuranza e curiosità che finii in questo purgatorio e fu sempre a causa della medesima noncuranza che perdetti la via tra i vicoli di questa città e smarrii me stesso. Ed ora che ho intravisto la luce, mi domando se le tenebre non emanino un calore ormai troppo confortevole da abbandonare, troppo caldo e morbido per uscire a riveder le stelle.
+<br><br>
+Avevo solamente vent’anni quando sentii la melodia per la prima volta. 
+Il mio corso di studi era ormai quasi concluso ed iniziavo a domandarmi cosa ne sarebbe stato di me. Mi trovavo di fronte un futuro incerto, come anche altri ragazzi della mia scuola e non sapevo verso quale delle infinite vie volgere il mio sguardo.
+Capitò dunque, precisamente nel giorno del mio ventesimo compleanno, che i miei genitori ricevettero una chiamata, da una lontana cugina, figlia della sorella della mia seconda madre. 
+In passato avrei detto che quello è stato l’inizio di tutto, ma non avevo idea dell’errore che stavo commettendo. La città stava già subdolamente spargendo la sua canzone, la sua convocazione nei luoghi in cui vivevo e in cui mi sentivo al sicuro. 
+Avevo in programma una festa per il mio compleanno, ed invitai alcuni degli amici più cari, che si presentarono all’ora di pranzo.
+Mangiammo e ci divertimmo, parlammo dei nostri segreti da adolescenti e passammo l’ennesimo di bei momenti.
+Ricordo candidamente di quando mi accorsi che Giulia non era più nella stanza poiché, con la scusa di dover andare in bagno, si diresse in camera mia e tornò con indosso alcuni dei miei vestiti. Passò il resto della festa indossando quelli e fu incredibilmente imbarazzante dover spiegare a mia madre che non eravamo una coppia, solo che lei era fatta così.
+Giulia fu sempre una grande amica per me. Insieme a lei mi sentivo al sicuro, aveva un’anima pacifica, colorata. 
+<br><br>
+Io e mia madre comprammo fin troppe cibarie per la festa. Con la paura che i miei sette amici rimanessero con la bocca disoccupata, riempimmo il tavolo della sala di pizzette e paste di vario genere. L’ho realizzato solo di recente, q. Quanto assomigli a mia madre intendo.
+Questo desiderio inconscio di dimostrare a tutti che non ci mancano i soldi, che siamo esattamente come loro e che possiamo permetterci di spendere quanto serve per una festa.
+O forse non le assomiglio affatto. Magari stava solamente assecondando le mie insicurezze da adolescente ansioso di fare bella figura con gli amici.
+Ho lavorato molto su me stesso recentemente. Una volta la mia ex mi gridò, esasperata, che  sono troppo ossessionato dai soldi.
+Non capii, in principio. Non mi ero mai risparmiato un centesimo con lei tra vacanze, ristoranti e regali costosi, ma non parlava di quello.
+L’ho capito, adesso.
+<br><br>
+La festa andava bene.
+Non so cosa mi prese, in verità.
+Eravamo tutti molto allegri e spensierati quando decisi di dar loro la notizia.
+“Me ne vado” dissi.
+O qualcosa del genere. Ѐ difficile mettere a fuoco per bene i dettagli di quel giorno di più di tre anni fa.
+Come quando sei vittima di un forte trauma e i ricordi diventano sfocati e molto luminosi. Le sagome iniziano a perdere i loro contorni e quella sorta di rumore di fondo prende il sopravvento sulle loro parole.
+Questo è un dettaglio non necessario, ma mi ricordo di ragazza x, la chiamerò così per non pronunciare il suo nome.
+Ragazza x era seduta sulle mie gambe in quel momento, sul divano nell’angolo della sala, con gli occhi gelosi del suo fidanzato, ragazzo x, che ci guardava con la coda dell’occhio.
+Eravamo grandi amici ai tempi, tutti e tre.
+Credo di aver commesso alcuni errori sulla strada per arrivare qui.
+L’ho capito, adesso.
+<br><br>
+L’atmosfera si fece pesante quando dissi quelle parole.
+Si voltarono tutti verso di me, cupo e silenzioso che cercavo le parole adatte per spiegarmi.
+Avevo gli occhi puntati in terra, come al mio solito quando devo dare brutte notizie.
+Dissi loro che avevo quest’opportunità, in un paese lontano.
+O meglio, non dissi loro che quella era una di tre scelte che mi furono presentate nel medesimo giorno del mio ventesimo compleanno e che avevo già deciso.
+<br><br>
+Di recente mi è stato detto più volte che vivo una vita troppo adulta per la mia età.
+Tutte queste decisioni molto difficili da prendere ed il peso di una vita che per molto tempo ho creduto mi sia stata imposta.
+I miei amici vivono ancora con i loro genitori.
+Escono, si divertono e studiano ancora, giocano.
+Ed io sono qui, invidioso ed arrabbiato.
+<br><br>
+Alcune settimane dopo il mio compleanno affrontai l’esame di maturità e lo passai a pieni voti. Erano tutti certi che avrei avuto un futuro brillante e che avrei fatto strada.
+Ed in effetti di strada ne ho fatta, ma non penso sia ciò che intendevano.
+Non ricordo la sensazione di quando ti diplomi, e questo mi intristisce molto.
+Il senso di spensieratezza e libertà che solo poche occasioni nella vita ti concedono di sperimentare.
+Mi ricordo l’esame però. Buono, ma di sicuro non da voto massimo, che poi “voto massimo”.
+Con due crediti in più, mi avrebbero dato anche la lode. So che l’avrebbero fatto.
+Ma non li avevo tutti, quindi cercai di convincere il mio professore di reti a darmi novantanove invece di cento. Non volle.
+Ed in effetti era una scemenza.
+Chimi assistette al mio esame ed Alberto aspettò fuori. Poco più tardi si presentò anche Negro. A volte mi chiedo come stia, Negro. In tutta la classe, oltre agli altri due che ho citato ed un altro paio di nomi, era il solo a starmi simpatico.
+Dissi che me ne sarei andato anche durante l’esame, e ad un paio di professoresse vennero gli occhi lucidi.
+Sono tutti particolari non rilevanti ai fini della storia, ma ricordare mi scalda.
+Vidi Nicoletta e gli altri volti importanti della mia adolescenza e lo dissi anche a loro.
+Dico “Nicoletta e gli altri” non perchè agli altri voglia meno bene, ma perchè di quella volta mi ricordo bene la sua reazione.
+Un volto pieno di incredulità e confusione.
+“Ma come?! No, io non voglio.” furono le sue parole.
+Ed anche la pizza in mano agli altri taceva, tale che cupa era quella sera d’estate.
+Vorrei ricordare qualche bel dettaglio in più, come l’ubriacatura al mare di qualche giorno dopo e la nuotata di mezzanotte nell’Adriatico.
+La tempesta delle due del mattino che ci costrinse a tornare nelle nostre roulotte e che spense anche la luce del falò in spiaggia.
+Dopo pochi giorni lasciai i miei amici in seguito a una chiamata urgente dei miei. Se non mi fossi sbrigato a tornare e a salire sull’aereo, quel posto che mi avevano offerto se lo sarebbe preso qualcun altro.
+Ci sono diverse altre cose che accaddero in quei giorni e che sono parecchieo importanti ai fini del racconto, ma intendo tornarci più tardi per esprimermi al meglio al riguardo.
+Il resto è abbastanza ofuscato. 
+Non ricordo il ritorno e non ricordo l’arrivo a casa.
+Non ricordo la rassegnazione negli occhi e nel cuore dei miei e non ricordo l’ultima volta che accarezzai il gatto. Ho giusto qualche accenno nella memoria delle raccomandazioni pre-volo. Che se non me la fossi sentita o se non volessi più farlo, andava bene così.
+Che potevo tornare indietro in qualunque momento e che loro non mi avrebbero voluto meno bene per quello.
+Ricordo della banconota da cinquanta di mio padre, che furono gli unici soldi con cui andai via: “per le emergenze” mi disse. “O se ti viene fame in aeroporto” mia madre.
+Ah! Mi viene da ridere se penso che questi sono i miei “soldi del papi” con cui ho iniziato a vivere.
+Ce li ho ancora ed intendo incorniciarli. Proprio come aveva fatto Anna coi suoi primi dieci euro guadagnati grazie al lavoro che ama.
+Ma non mi va di parlare di lei, mi vergogno anche a nominarla.
+<br><br>
+Era il mio primo volo, ma ricordo poco anche di quello.
+Feci la conoscenza di Angela, che poi non rividi mai più.
+Sedeva sul sedile accanto al mio e disse che potevo passare da lei e da suo marito e che potevamo fare amicizia, perché le sembravo un bel tipo, ma io non avevo idea di dove stavo andando.
+L’autista arrivò in ritardo ed impiegammo circa un’ora per arrivare in città.
+Durante il viaggio parlai con lui, George, e sua moglie di cui non ricordo il nome.
+Lui autista a tempo pieno e lei organizzatrice di matrimoni romeni, business in crescita in quel periodo.
+Non mi rimase molto di loro, eccetto il biglietto da visita di lei, che ancora conservo, ed il mio primo debito, che avrei dovuto pagare a mia zia. 
+Quel giorno non andai direttamente nella nuova casa, ma nel luogo in cui lavorava mia cugina, che mi aveva trovato un posto.
+Detti le mie informazioni e, firmati i documenti, mi fornirono un conto bancario da usare nel paese. 
+Il giorno seguente, l’otto luglio, iniziai il lavoro.
+Quei giorni furono molto frenetici.
+Ricordo poche cose e desidero dimenticare molte di queste. Quello iniziale fu un periodo adrenalinico e di sentimenti molto forti.
+<br><br>
+Finora ho parlato con grande disinvoltura della mia partenza e del mio arrivo, ma è bene sapere, prima di proseguire, che Mille Miglia è una città… Peculiare, unica nel suo genere, si potrebbe dire.
+Temo sarò preso per pazzo, ad onor del vero, o nel migliore dei casi, malato di qualche crisi isterica o nervosa. Eppure ciò che racconterò non è niente di meno di ciò che ho visto con i miei stessi occhi.
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - Mani</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Aprile 2021</span>
+                <h1 class="entry-title">Mani</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>La notte aveva preso il sopravvento sul cielo notturno da non più di un’ora e gli ultimi bagliori crepuscolari proseguirono la loro lenta e costante discesa all’orizzonte.
+Era una scena davvero silenziosa, come lo fu anche la prima volta.<br>
+
+- Li senti i grilli?<br>
+- No.<br>
+- Già, nemmeno io.<br>
+- Però sento il vento.<br>
+
+E in effetti solamente la brezza fresca parlava oltre ai ragazzi.<br>
+
+- Pensi ce l’abbia con noi?<br>
+- Perché dovrebbe?<br>
+- Non ti sto chiedendo se sia arrabbiato con noi.<br>
+Intende dirci qualcosa, secondo te?<br>
+
+Si trovavano su una panchina in un parco deserto, sotto uno dei pochi lampioni funzionanti, di fronte a un pino non più alto di una villetta a schiera, ma largo almeno quanto il signor Brusati, il prof di chimica.
+Il signor Brusati era un uomo di sostanza, certamente più robusto della media degli uomini.<br>
+
+- Non credo stia parlando con noi. Noi non veniamo qui così spesso, ma lui sicuramente sì. Magari discute con quell’albero fino a notte fonda e poi si corica e diventa nebbia.<br>
+-  Magari il vento è donna e viene qui per fare l’amore con l’albero.<br>
+Lo fanno fino al mattino, tanto che il giorno seguente il pino ha ancora addosso tutta la rugiada del vento!<br>
+- Perchè dici che è il vento ad essere donna e non l’albero?<br>
+- Perchè l’albero mi ricorda il prof. Brusati.<br>
+
+Si dicevano tante cose sul conto del signor Brusati in quel periodo e non cattiverie o parole a discapito. Solo… cose.
+Sua moglie diceva spesso che il suo era un uomo “Florido” e che la sostanza è segno di ricchezza.
+I suoi studenti, invece, spesso giocavano a interrogarsi a vicenda sull’età alla quale avesse perso la facoltà di vedersi il pene.
+Ma infondo il signor brusati era un brav’uomo.<br>
+
+- Secondo me sarebbero una bella coppia. Lei che gli accarezza le chiome e lui che ne gode fino al mattino. Un po’ come noi.<br>
+
+I due si trovavano sulla panchina da diverse ore ormai. Lei seduta e lui sdraiato e con la testa sulle sue cosce.
+Delle due coppie di mani presenti, ben poche non erano indaffarate in qualcosa.
+Che si trattasse di accarezzarsi i capelli a vicenda o a salirsi in viso e a sfiorarsi le labbra coi polpastrelli o ancora a solleticarsi a vicenda con la sola punta delle unghie.
+
+Un po’ come faceva il signor Brusati con i suoi 2 gatti, il persiano e “topo pelato”.
+Il topo pelato, a discapito del suo nomignolo, era l’animale preferito del signor Brusati che, data e considerata la sua mano piuttosto pesante, è finito con lo strappare via tutti i peli dalla testa del gatto nel corso degli anni, nel goffo tentativo di accarezzarlo.
+
+Anche tra i gatti si dicevano diverse cose sul conto del signor Brusati.
+Il persiano si chiedeva di quante lattine di tonno si fosse cibato in vita sua e il topo rispondeva, almeno 1000 per ognuna delle sue 7 vite.<br>
+
+- Per me sarebbero una pessima coppia, invece.
+Hanno nature diverse e non sono fatti per esistere l’uno per l’altro.<br>
+
+E si voltò a pancia in giù, affondando la faccia tra le cosce di lei.
+
+Il vento proseguì quindi nella sua parlata ininterrotta con l’albero, accompagnato dall’indaffarato movimento di due paia di mani.
+Erano due coppie piuttosto strane quelle mani, veramente bizzarre.<br>
+
+- Se tu avessi un fratello gemello, vi sposereste mai con due ragazze che sono sorelle gemelle?<br>
+- Credo di no.<br>
+- Perchè?<br>
+- Perchè due di noi finirebbero per divorziare.
+Guarda le nostre mani ad esempio:
+Due di loro non si staccano da ore. Le altre due vanno in giro al solo scopo di farsi piacere a vicenda. Dita tra i capelli, unghie sulle labbra, sulla pelle e non si toccano quasi mai.
+La prima coppia di gemelli finirebbe per litigare, per dire che ciò che hanno non è autentico, ma è qui che sbagliano.
+Anche non staccarsi l’uno dall’altro per ore è una forma d’amore.<br>
+- Sei profondo stasera.<br>
+- Sai cos’altro è profondo?<br>
+- Il signor Brusati.<br>
+- Mamma mia, sì!<br>
+
+La luna dava uno strano colorito al pino, una sorta di bianco sporco, come muffa cresciuta dentro a un camino.
+I due ragazzi ridevano e si coccolavano, si volevano bene e contemplavano il loro amore e l’amore del vento per l’albero e quello delle mani l’una per l’altra.
+Si chiedevano quanto grande fosse il mondo rispetto a loro e quanti “signor Brusati” potessero stare in una smart.
+Lui disse 0,7.
+Lei concluse con 0,69.<br>
+
+Infine sorse l’alba.
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - Malcolm</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Luglio 2021</span>
+                <h1 class="entry-title">Malcolm</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>La storia riassuntiva delle vicende di tale Malcolm Marshall Middleton ha inizio a Mistdale, un ristretto borgo nel nord-est della Gran Bretagna, quand’egli, esattamente nel giorno e nell’ora dell’abbattimento del muro di Berlino, emise il suo primo vagito.
+Il giovane Malcolm, Malc, così soprannominato dal di lui unico amico, Matt, aveva trascorso in piena tranquillità i primi anni di vita, come ogni altro bambino di qualunque altro tempo, facendosi trascinare dal volere genitoriale e non prendendo quasi mai parte a decisioni di più rilevata importanza nei riguardi della sua esistenza.
+Il padre, tale Marvin Mason Middleton, Marv, così abbreviato dai colleghi marinai, si guadagnava da vivere prestando manodopera su uno degli, ormai sempre meno, pescherecci della “Major Mermaid”, una compagnia navale statale bicentenaria che, dal 1782, ogni giorno, eccezione fatta per la domenica, inviava navi da crociera, pescherecci, traghetti e navi mercantili in giro per il mar del Nord.
+La principale ragione per la quale i pescherecci erano rimasti ormai pochi, fu l’imponente corsa alle grandi città, avvenuta in seguito alla chiusura del conflitto globalmente riconosciuto come “Guerra fredda”.
+Adesso che la paura di un possibile sgancio di una testata nucleare nel centro di Londra o di Birmingham si era fatta fioca, tutti quanti avevano deciso di rincorrere la vita di città, speranzosi di trovare l’agio che i piccoli borghi come quello di Marvin e famiglia non erano in grado di fornire, se non al prezzo di anni di duro lavoro, fatica e sudore.
+Risulta quindi quasi paradossale l’andamento della vita lavorativa del padre di famiglia.
+Data la sempre maggiore scarsità di popolazione in quella zona, egli perse il lavoro sul peschereccio a causa della troppo ridotta richiesta di pesce fresco e finì per essere assunto, prima su una nave mercantile, poi su un traghetto ed infine su una nave da crociera, un genere di attività in crescita in quel periodo.
+A bordo di quest’ultima e nell’arco di nemmeno sei mesi, Marv scalò la gerarchia del ponte, passando da uomo delle pulizie ad aiuto cuoco a cameriere.
+La posizione ultima, che ottenne e che mai si sarebbe sognato di scartare in cambio di altre, fu quella di direttore di sala, ovvero una difficile missione alla ricerca dell’agio e della gaiezza dei passeggeri intenti a degustare un piatto di frutti di mare all’interno del ristorante della nave, meglio tradotta con un comandare a bacchetta i camerieri a suon di “pulisci qua”, “servi là” e “portà un menù a quello”, il tutto accompagnato da uno stipendio da capogiro.
+Non c’è quindi da stupirsi se la famiglia Middleton aveva progressivamente raggiunto uno stile di vita agiato, venduto la vecchia casa in cambio di una nuova e se si era addirittura potuta permettere tre settimane di ferie annuali in Scozia.
+La madre di Malcolm, tale Meredith Marley Middleton, sei anni più giovane del marito e appena ventenne, l’anno successivo alla nascita del figlio, trovò lavoro come assistente nell’orfanotrofio “Monty Mayl”, una vecchia struttura polverosa, ma solida, posizionata su un’altura non troppo distante dalla riva del mare ed in alto abbastanza da regalare la vista dell’intero borgo di Mistdale.
+Il lavoro di Meredith, Mary, così chiamata dai ragazzi dell’orfanotrofio, consisteva nell’occuparsi dei due neonati, Mel e Mina, dare assistenza nel servire il pranzo, mettere a dormire i più piccoli nel primo pomeriggio, far si che tutti quanti recitassero la preghiera prima di mangiare ed infine, compito più importante di tutti, crescere ragazzi sani ed educati che potessero essere scelti dalle coppie, periodicamente in visita e in cerca di un bambino da adottare.
+Il lavoro di Mary calzava in effetti a pennello con il suo recente stato di maternità.
+Quando capitava che Marvin fosse costretto lontano da casa, a causa del lavoro, per più di un giorno, la ragazza portava il figlio con sé e se ne occupava in orfanotrofio dove, soventemente, trascorreva le notti in compagnia dei bambini o facendo lunghe passeggiate al chiarore della luna insieme a Malc, godendo del rumore delle onde infrante sugli scogli.
+L’orfanotrofio divenne quindi il centro indiscusso della vita di Meredith e Malcolm, il quale crebbe in compagnia di un numero non indifferente di fratelli e sorelle più grandi, ventisei bambini in tutto.
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>

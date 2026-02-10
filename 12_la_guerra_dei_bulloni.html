@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlad's Space - La guerra dei bulloni</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 3rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover .back-arrow {
+            transform: translateX(-3px);
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .entry-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .entry-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ===== TEXT CONTENT ===== */
+        .entry-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .entry-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content ul,
+        .entry-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .entry-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .entry-content strong {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .entry-content em {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .entry-content code {
+            background: rgba(44, 95, 122, 0.08);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1.5rem 2rem;
+            }
+
+            .content-wrapper {
+                padding: 2.5rem 2rem;
+            }
+
+            .entry-title {
+                font-size: 2rem;
+            }
+
+            .entry-content {
+                font-size: 1rem;
+            }
+
+            .entry-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .entry-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="vladspace_zzz.html" class="back-link">
+            <span class="back-arrow">←</span>
+            Back to archive
+        </a>
+
+        <div class="content-wrapper">
+            <div class="entry-header">
+                <span class="entry-date">Gennaio 2022</span>
+                <h1 class="entry-title">La guerra dei bulloni</h1>
+            </div>
+
+            <div class="entry-content">
+                <p>In questo nauseante e vorticoso movimento vitale, caro mi fu di domandarmi il motivo.
+
+Non che il motivo in sé contasse qualcosa, ma il bisogno infantile di completezza, di comprensione e l’avidità di ottenere ciò che di ottenere non mi era concesso, mi costringeva, quasi, a domandarmi il motivo.
+Confesso, dunque, che mi sembra insensato, da un lato.
+Sebbene l’osservazione della realtà porti spesso ad interrogarsi sul motivo, ancor più spesso quella curiosità non esiste.
+Che le oche sembrino fatte per volare, che le api sembrino fatte per far miele, che la natura non potrebbe avere altro corso se non questo, e allora perché esiste un motivo?
+O, meglio.
+Se un motivo non esiste o non è per noi comprensibile, con che audacia siamo provvisti della capacità di percepire il bisogno di avere un motivo?
+E da dove proviene, infine, il bisogno di costringere sé stessi alla ricerca di quest’ultimo?
+Non è forse natura umana, per via di natura universale, mettersi alla ricerca di ciò che meglio si pone in sostegno di una miglior sopravvivenza?
+Che il bisogno di nutrirsi o di copulare vadano di pari passo con quello di avere un motivo?
+Che le condizioni di vita vengano in qualche modo a peggiorare in assenza di ciò?
+
+Ma non è forse stupida la considerazione stessa di un motivo intrinseco?
+La supposizione assiomatica della presenza indiscussa di una chiave inglese nel capanno, lì posta con l’unica ragione di dare spiegazione alla, in altro modo ingiustificata, presenza di un gruppo di bulloni che, altrimenti, non saprebbe attribuire un significato alla propria ragion d’essere?
+
+E i bulloni si dicono, per rassicurarsi, che la chiave un giorno arriverà, darà loro un senso, una ragione, un valore nuovo, diverso.
+Che li userà come supporti per un’opera più grande, magari incomprensibile, ma non prendono, nemmeno per un secondo, in considerazione l’idea che forse la chiave non esiste, o non esiste più o magari non è mai esistita.
+Magari avrebbe dovuto essercene una e loro sono stati messi lì in sua attesa, ma in seguito vi fu un cambio di piani.
+Non considerano nemmeno l’idea che la chiave potrebbe aver già fatto uso di loro a loro insaputa ed essi non sono in grado di comprendere ciò in quanto semplici bulloni e non  chiavi.
+Non potrebbero essi porsi davanti all’idea che nel capanno non esistono chiavi per stringere bulloni, ma solo fori in tavole di legno che aspettano di essere colmate dai bulloni stessi?
+Ma, in quel caso, il bullone più scettico avrebbe da ridire sulla necessaria presenza di una chiave, poiché, a questo punto, sia il foro che il bullone che la chiave sono pari elementi in attesa l’uno dell’altro per realizzare il proprio scopo e quindi il valore del bisogno della presenza, stavolta, sia di una chiave che di un foro, diventa intoccabile.
+Sia quindi concesso ai bulloni di aspettare una chiave ed ai fori di aspettare i bulloni, ma saranno, infine, questi strumenti, contenti di essere usati in quanto tali?
+Quando i tre si incontreranno e lo scopo diverrà uno ed un unico?
+Poiché l’interpretazione del motivo è superflua, insensata e, dunque non concessa, quando esso è già stabilito in partenza.
+
+Io dico, dunque, che non un foro verrà riempito nella guerra dei bulloni, che le chiavi perderanno e scompariranno dal capanno degli attrezzi e che nessuno vorrà o potrà più domandarsi del motivo, poiché se ne sentiva davvero il bisogno solo fin quando non è arrivato, e chi lo bramava tanto ne è rimasto insoddisfatto.
+</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>
