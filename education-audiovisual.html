@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiovisual Production & Broadcasting - Vlad Rotaru</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & ROOT VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f8f8;
+            --accent: #2c5f7a;
+            --accent-light: #4a8ba8;
+            --text-primary: #2a2a2a;
+            --text-secondary: #666;
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, #e8ebe9 0%, #d4d9d6 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            background: rgba(232, 235, 233, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            min-height: 100vh;
+            padding: 10rem 4rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-light);
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        .detail-header {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .year-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(44, 95, 122, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .detail-header h2 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .detail-content {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .detail-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .section li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(44, 95, 122, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f7f6 0%, #eaeeed 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .program-item {
+            background: rgba(44, 95, 122, 0.05);
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .main-container {
+                padding: 8rem 2rem 2rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2rem;
+            }
+
+            .detail-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .detail-content {
+                padding: 2rem;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .program-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <a href="education.html" class="back-link">Back to Education</a>
+
+        <div class="detail-header">
+            <span class="year-badge">2024 - 2026</span>
+            <h1>Audiovisual Production & Broadcasting</h1>
+            <h2>Professional Training - Live Events & Television Production</h2>
+            <div class="meta-info">
+                <span class="meta-item">📍 Italy</span>
+                <span class="meta-item">🎬 Live Production</span>
+                <span class="meta-item">📺 Broadcasting</span>
+            </div>
+        </div>
+
+        <div class="detail-content">
+            <section class="section">
+                <h3>Overview</h3>
+                <p>Professional experience in live events and television production, specializing in video operations, LED wall management, and broadcasting systems. Hands-on training through direct collaboration with Mediaset on high-profile television productions.</p>
+                
+                <p>This specialized training combines technical expertise with real-world production experience in professional broadcast software and live workflows, demanding precision and performance under live television pressure.</p>
+            </section>
+            <section class="section">
+                <h3>Technical Competencies</h3>
+                <ul>
+                    <li>Professional video operations with LED wall management and configuration</li>
+                    <li>Resolume for video mapping, VJing, and real-time visual effects</li>
+                    <li>vMix for live streaming, production switching, and multicam management</li>
+                    <li>NovaLCT video control system configuration for LED displays</li>
+                    <li>PowerPoint operator for corporate productions and live events</li>
+                    <li>Real-time graphics management and content delivery</li>
+                    <li>Technical troubleshooting in live production environments</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h3>Professional Software Expertise</h3>
+                <ul>
+                    <li><strong>Resolume:</strong> Video mapping, content management, and live performance control</li>
+                    <li><strong>vMix:</strong> Live streaming, video switching, and multicam operations</li>
+                    <li><strong>NovaLCT:</strong> LED display configuration and video signal management</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h3>Television Production Experience</h3>
+                <p>Collaboration with Mediaset on diverse television formats, from entertainment and news to sports and morning shows.</p>
+                
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--accent);">Entertainment Shows</h4>
+                <div class="program-grid">
+                    <div class="program-item">Le Iene</div>
+                    <div class="program-item">Le Iene Inside</div>
+                    <div class="program-item">Striscia la Notizia</div>
+                    <div class="program-item">Io Canto</div>
+                    <div class="program-item">Caduta Libera</div>
+                </div>
+
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--accent);">News Programs</h4>
+                <div class="program-grid">
+                    <div class="program-item">TGCom24</div>
+                    <div class="program-item">Dentro la Notizia</div>
+                    <div class="program-item">Quattro di Sera</div>
+                    <div class="program-item">Dritto e Rovescio</div>
+                    <div class="program-item">Zona Bianca</div>
+                </div>
+
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--accent);">Sports & Morning Shows</h4>
+                <div class="program-grid">
+                    <div class="program-item">Pressing</div>
+                    <div class="program-item">Mattino Cinque</div>
+                    <div class="program-item">Mattino Quattro</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>Live Production Skills</h3>
+            </section>
+
+            <div class="badges">
+                <span class="badge">Resolume</span>
+                <span class="badge">vMix</span>
+                <span class="badge">NovaLCT</span>
+                <span class="badge">Video Operations</span>
+                <span class="badge">LED Management</span>
+                <span class="badge">PowerPoint</span>
+                <span class="badge">Broadcasting</span>
+                <span class="badge">Live Production</span>
+                <span class="badge">Video Mapping</span>
+                <span class="badge">Live Streaming</span>
+                <span class="badge">Broadcast Systems</span>
+            </div>
+        </div>
+
+        <a href="education.html" class="back-link">Back to Education</a>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024-2026 Vlad Rotaru. All rights reserved. | Official Domain: vlad-rotaru.com</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">info: contact@vlad-rotaru.com</p>
+    </footer>
+</body>
+</html>
